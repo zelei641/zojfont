@@ -1,18 +1,32 @@
 <template>
-  <a-calendar v-model="value" />
-  select: {{ value }}
+  <div id="app">
+    <template v-if="route.path.startsWith('/user')">
+      <router-view />
+    </template>
+    <template v-else>
+      <BasicLayout />
+    </template>
+  </div>
 </template>
 
-<script>
-import { ref } from "vue";
+<script setup long="ts">
+import BasicLayout from "@/layouts/BasicLayout.vue";
+import { useRoute, useRouter } from "vue-router";
+import { useStore } from "vuex";
+import { onMounted } from "vue";
 
-export default {
-  setup() {
-    const value = ref(new Date("2023-01-01"));
+const route = useRoute();
+const store = useStore();
 
-    return {
-      value,
-    };
-  },
+/*
+全局初始化函数,有全局单次调用的代码，都可以写到这里
+ */
+const doInIt = () => {
+  console.log("hello");
 };
+
+//使用钩子函数调用
+onMounted(() => {
+  doInIt();
+});
 </script>

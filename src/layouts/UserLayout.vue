@@ -1,8 +1,10 @@
 <template>
-  <div id="basicLayout">
+  <div id="userLayout">
+    <h1 style="margin: auto">用户登录</h1>
     <a-layout style="min-height: 100vh">
       <a-layout-header class="header">
-        <GlobalHeader />
+        <img src="../assets/logo.jpg" class="logo" />
+        <div>z oj</div>
       </a-layout-header>
       <a-layout-content class="content">
         <router-view />
@@ -17,21 +19,26 @@
 </template>
 
 <style scoped>
-#basicLayout {
+#userLayout {
+  text-align: center;
 }
 
-#basicLayout .header {
+#userLayout .logo {
+  width: 64px;
+  height: 64px;
+}
+
+#userLayout .header {
+  margin-top: 16px;
   margin-bottom: 16px;
-  box-shadow: #eee 1px 1px 5px;
 }
 
-#basicLayout .content {
-  background: linear-gradient(to right, #eee, #fff);
+#userLayout .content {
   margin-bottom: 16px;
   padding: 20px;
 }
 
-#basicLayout .footer {
+#userLayout .footer {
   background: #efefef;
   padding: 16px;
   position: sticky;
@@ -42,11 +49,4 @@
 }
 </style>
 
-<script>
-import { defineComponent } from "vue";
-import GlobalHeader from "@/components/GlobalHeader.vue";
-
-export default defineComponent({
-  components: { GlobalHeader },
-});
-</script>
+<script></script>
