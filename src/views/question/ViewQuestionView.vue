@@ -189,6 +189,24 @@ onMounted(() => {
   loadData();
 });
 
+/**
+ * 提交代码
+ */
+const doSubmit = async () => {
+  if (!question.value?.id) {
+    return;
+  }
+  const res = await QuestionSubmitControllerService.doQuestionSubmitUsingPost({
+    ...form.value,
+    questionId: question.value.id,
+  });
+  if (res.code === 0) {
+    message.success("提交成功");
+  } else {
+    message.error("提交失败," + res.message);
+  }
+};
+
 const onPageChange = async (page: number) => {
   searchParams.value = {
     ...searchParams.value,
