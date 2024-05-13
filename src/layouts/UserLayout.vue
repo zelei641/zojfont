@@ -1,6 +1,6 @@
 <template>
   <div id="userLayout">
-    <h1 style="margin: auto">用户登录</h1>
+    <h1 style="margin: auto">欢迎来到ZoJ</h1>
     <a-layout style="min-height: 100vh">
       <a-layout-header class="header">
         <img src="../assets/logo.jpg" class="logo" />

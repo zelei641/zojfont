@@ -11,6 +11,7 @@ import ViewQuestionView from "@/views/question/ViewQuestionView.vue";
 import ManageQuestionView from "@/views/question/ManageQuestionView.vue";
 import QuestionSubmitView from "@/views/question/QuestionSubmitView.vue";
 import QuestionSubmitDetailsView from "@/views/question/QuestionSubmitDetailsView.vue";
+import OjIndexView from "@/views/question/OjIndexView.vue";
 
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -36,7 +37,7 @@ export const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "主页",
-    component: QuestionsView,
+    component: OjIndexView,
     meta: {},
   },
   {
@@ -49,7 +50,7 @@ export const routes: Array<RouteRecordRaw> = [
     name: "创建题目",
     component: AddQuestionView,
     meta: {
-      access: accessEnum.USER,
+      access: accessEnum.ADMIN,
     },
   },
   {

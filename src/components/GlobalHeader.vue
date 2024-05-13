@@ -22,10 +22,11 @@
       </a-menu>
     </a-col>
 
-    <a-button type="text" status="success" @click="loginClick">登录</a-button>
-
     <a-col flex="100px">
       <div>{{ store.state.user?.loginUser?.userName ?? "未登录" }}</div>
+    </a-col>
+    <a-col flex="100px">
+      <a-button type="text" status="success" @click="loginClick">登录</a-button>
     </a-col>
   </a-row>
 </template>

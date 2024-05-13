@@ -27,6 +27,14 @@
         </a-button>
       </a-form-item>
     </a-form>
+    <a-button
+      type="primary"
+      status="success"
+      style="width: 120px; margin-left: 60px"
+      @click="geToRegister"
+    >
+      注册
+    </a-button>
   </div>
 </template>
 <script setup lang="ts">
@@ -61,5 +69,14 @@ const handleSubmit = async () => {
   } else {
     message.error("登陆失败，" + res.message);
   }
+};
+
+/**
+ * 跳转到登陆页面
+ */
+const geToRegister = () => {
+  router.push({
+    path: `/user/register`,
+  });
 };
 </script>
