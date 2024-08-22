@@ -34,7 +34,9 @@
       <template #acceptedRate="{ record }">
         {{
           `${
-            record.submitNum ? (record.accpetNum / record.submitNum) * 100 : "0"
+            record.submitNum
+              ? Math.ceil((record.accpetNum / record.submitNum) * 100)
+              : "0"
           }% (${record.accpetNum}/${record.submitNum})`
         }}
       </template>

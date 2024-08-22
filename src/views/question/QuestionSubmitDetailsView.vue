@@ -18,16 +18,19 @@
           </div>
         </a-card>
         <a-card label="时间">
-          {{ questionSubmit.judgeInfo.time ?? 0 }}
+          {{ questionSubmit.judgeInfo.time ?? 0 }}ms
         </a-card>
-        <a-card label="内存限制">
-          {{ questionSubmit.judgeInfo.memory ?? 0 }}
+        <a-card label="内存" v-if="questionSubmit.judgeInfo.memory">
+          {{
+            questionSubmit.judgeInfo.memory == 0
+              ? 0
+              : questionSubmit.judgeInfo.memory / (1024 * 1024)
+          }}MB
         </a-card>
 
         <a-card label="使用语言">
           {{ questionSubmit.language ?? "java" }}
         </a-card>
-
         <a-button
           status="success"
           @click="toQuestionPage(questionSubmit.questionId)"
@@ -38,6 +41,17 @@
       <a-descriptions title="代码">
         <a-card>
           {{ questionSubmit.code }}
+        </a-card>
+      </a-descriptions>
+      <a-descriptions title="错误信息">
+        <a-card label="输入" v-if="questionSubmit.judgeInfo.failInput">
+          {{ questionSubmit.judgeInfo.failInput ?? "题目正确" }}
+        </a-card>
+        <a-card label="输出" v-if="questionSubmit.judgeInfo.failOutput">
+          {{ questionSubmit.judgeInfo.failOutput ?? "题目正确" }}
+        </a-card>
+        <a-card label="正确输出" v-if="questionSubmit.judgeInfo.failRes">
+          {{ questionSubmit.judgeInfo.failRes ?? "题目正确" }}
         </a-card>
       </a-descriptions>
     </a-card>
@@ -57,6 +71,7 @@ import message from "@arco-design/web-vue/es/message";
 import { useRoute, useRouter } from "vue-router";
 import moment from "moment";
 import { defineProps, withDefaults } from "vue/dist/vue";
+import { number } from "property-information/lib/util/types";
 
 const route = useRoute();
 

@@ -24,19 +24,20 @@ interface Props {
  */
 const props = withDefaults(defineProps<Props>(), {
   value: () => "",
-  language: () => "java",
+  language: () => "",
   handleChange: (v: string) => {
-    console.log(v);
+    console.log("监听到变化" + v);
   },
 });
 const codeEditorRef = ref();
 const codeEditor = ref();
+const nextLanguage = ref();
 
 /**
  * 监听属性值的改变
  */
 watch(
-  () => props.language,
+  () => props.value,
   () => {
     if (codeEditor.value) {
       monaco.editor.setModelLanguage(
@@ -44,8 +45,18 @@ watch(
         props.language
       );
     }
+    console.log(nextLanguage.value + props.language);
+    if (
+      toRaw(codeEditor.value).getModel().getValue() == "" ||
+      nextLanguage.value != props.language
+    ) {
+      nextLanguage.value = props.language;
+      console.log();
+      toRaw(codeEditor.value).getModel().setValue(props.value);
+    }
   }
 );
+
 onMounted(() => {
   if (!codeEditorRef.value) {
     return;

@@ -12,6 +12,7 @@ import ManageQuestionView from "@/views/question/ManageQuestionView.vue";
 import QuestionSubmitView from "@/views/question/QuestionSubmitView.vue";
 import QuestionSubmitDetailsView from "@/views/question/QuestionSubmitDetailsView.vue";
 import OjIndexView from "@/views/question/OjIndexView.vue";
+import UserAddPost from "@/views/post/UserAddPost.vue";
 
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -38,6 +39,12 @@ export const routes: Array<RouteRecordRaw> = [
     path: "/",
     name: "主页",
     component: OjIndexView,
+    meta: {},
+  },
+  {
+    path: "/add/userPost",
+    name: "编辑帖子",
+    component: UserAddPost,
     meta: {},
   },
   {

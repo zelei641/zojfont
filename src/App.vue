@@ -8,7 +8,6 @@
     </template>
   </div>
 </template>
-
 <script setup long="ts">
 import BasicLayout from "@/layouts/BasicLayout.vue";
 import { useRoute, useRouter } from "vue-router";

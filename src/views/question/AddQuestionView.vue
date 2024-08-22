@@ -16,7 +16,7 @@
       </a-form-item>
       <a-form-item label="判题配置" :content-flex="false" :merge-props="false">
         <a-space direction="vertical" style="min-width: 480px">
-          <a-form-item field="judgeConfig.timeLimit" label="时间限制">
+          <a-form-item field="judgeConfig.timeLimit" label="时间限制(s)">
             <a-input-number
               v-model="form.judgeConfig.timeLimit"
               placeholder="请输入时间限制"
@@ -25,7 +25,7 @@
               size="large"
             />
           </a-form-item>
-          <a-form-item field="judgeConfig.memoryLimit" label="内存限制">
+          <a-form-item field="judgeConfig.memoryLimit" label="内存限制(MB)">
             <a-input-number
               v-model="form.judgeConfig.memoryLimit"
               placeholder="请输入内存限制"
@@ -112,9 +112,9 @@ let form = ref({
   answer: "",
   content: "",
   judgeConfig: {
-    memoryLimit: 1000,
+    memoryLimit: 128,
     stackLimit: 1000,
-    timeLimit: 1000,
+    timeLimit: 1,
   },
   judgeCase: [
     {
