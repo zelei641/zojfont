@@ -13,6 +13,11 @@ import QuestionSubmitView from "@/views/question/QuestionSubmitView.vue";
 import QuestionSubmitDetailsView from "@/views/question/QuestionSubmitDetailsView.vue";
 import OjIndexView from "@/views/question/OjIndexView.vue";
 import UserAddPost from "@/views/post/UserAddPost.vue";
+import AddActive from "@/views/active/AddActive.vue";
+import ListActive from "@/views/active/ListActive.vue";
+import ActiveManage from "@/views/active/ActiveManage.vue";
+import ActiveAddQuestion from "@/views/active/ActiveAddQuestion.vue";
+import ActiveAddUser from "@/views/active/activeAddUser.vue";
 
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -45,6 +50,26 @@ export const routes: Array<RouteRecordRaw> = [
     path: "/add/userPost",
     name: "编辑帖子",
     component: UserAddPost,
+    meta: {},
+  },
+  {
+    path: "/add/active",
+    name: "添加活动",
+    component: AddActive,
+    meta: {},
+  },
+  {
+    path: "/active/admin",
+    name: "管理活动",
+    component: ActiveManage,
+    meta: {
+      access: accessEnum.ADMIN,
+    },
+  },
+  {
+    path: "/list/active",
+    name: "活动列表",
+    component: ListActive,
     meta: {},
   },
   {
@@ -84,6 +109,24 @@ export const routes: Array<RouteRecordRaw> = [
     component: AddQuestionView,
     meta: {
       hideInMenu: true,
+    },
+  },
+  {
+    path: "/add/active/question",
+    name: "活动添加题目",
+    component: ActiveAddQuestion,
+    meta: {
+      hideInMenu: true,
+      access: accessEnum.ADMIN,
+    },
+  },
+  {
+    path: "/add/active/user",
+    name: "活动添加用户",
+    component: ActiveAddUser,
+    meta: {
+      hideInMenu: true,
+      access: accessEnum.ADMIN,
     },
   },
   {
